@@ -6,7 +6,7 @@
     "UseHTTP": false,
     "UseHTTPS": true,
     "HTTPPort": "80",
-    "HTTPSPort": "443",
+    "HTTPSPort": "8000",
     "CertFile": "/etc/apache2/ssl/apache.crt",
     "KeyFile": "/etc/apache2/ssl/apache.key"
   }

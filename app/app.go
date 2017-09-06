@@ -164,7 +164,7 @@ func (a *App) initializeRoutes() {
 	a.Router.HandleFunc("/user/{uname}", a.authHandler(a.DeleteUser)).Methods("DELETE")
 	a.Router.HandleFunc("/user/{uname}", a.authHandler(a.UpdateUser)).Methods("PUT")
 
-	a.Router.Handle("/PacketRun/", http.StripPrefix("/PacketRun/", http.FileServer(http.Dir("client/html/"))))
+	a.Router.Handle("/PacketRun/", http.StripPrefix("/PacketRun/", http.FileServer(http.Dir("../client/html/"))))
 
 }
 
@@ -187,12 +187,12 @@ func (a *App) Run(s model.Server) {
 func (a *App) startHTTPS(s model.Server) {
 	fmt.Println(time.Now().Format("2006-01-02 03:04:05 PM"), "Running HTTPS On Port "+(s.HTTPSPort))
 	// Start the HTTPS listener
-	log.Fatal(http.ListenAndServeTLS(s.HTTPSPort, s.CertFile, s.KeyFile, a.Router))
+	log.Fatal(http.ListenAndServeTLS(":" + s.HTTPSPort, s.CertFile, s.KeyFile, a.Router))
 }
 // startHTTP starts the HTTP listener
 func (a *App) startHTTP(s model.Server) {
 	fmt.Println(time.Now().Format("2006-01-02 03:04:05 PM"), "Running HTTP on Port"+(s.HTTPPort))
 
 	// Start the HTTP listener
-	log.Fatal(http.ListenAndServe(s.HTTPPort, a.Router))
+	log.Fatal(http.ListenAndServe(":" + s.HTTPPort, a.Router))
 }

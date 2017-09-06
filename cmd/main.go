@@ -10,6 +10,7 @@ import (
 
 	"github.com/amoliyer80/PacketRun/app"
 	"github.com/amoliyer80/PacketRun/model"
+	"fmt"
 )
 
 
@@ -50,7 +51,7 @@ func Load(filename string, config interface{}) error {
 
 func main() {
 	var config = &model.Configuration{}
-	Load("config"+string(os.PathSeparator)+"config.json", config)
+	Load("../config"+string(os.PathSeparator)+"config.json", config)
 
 	a := app.App{}
 	user := model.User{
@@ -61,5 +62,6 @@ func main() {
 	a.Initialize(os.Getenv("APP_DB_USERNAME"),
 		os.Getenv("APP_DB_PASSWORD"),
 		os.Getenv("APP_DB_NAME"), user)
+	fmt.Printf("%s, %s, %s\n", config.Server.HTTPSPort, config.Server.KeyFile, config.Server.CertFile)
 	a.Run(config.Server)
 }

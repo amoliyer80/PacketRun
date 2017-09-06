@@ -1,0 +1,7 @@
+/vendor/*
+/target/bin/*
+coverage*.out
+/model-onboard/bp-nfv-model/
+*.go.swp*
+*.go.swo*
+.idea/*.*

@@ -1,0 +1,13 @@
+{
+  "Database": {
+    "Type": "postgresql"
+  },
+  "Server": {
+    "UseHTTP": false,
+    "UseHTTPS": true,
+    "HTTPPort": "80",
+    "HTTPSPort": "443",
+    "CertFile": "/etc/apache2/ssl/apache.crt",
+    "KeyFile": "/etc/apache2/ssl/apache.key"
+  }
+}
